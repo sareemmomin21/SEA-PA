@@ -1,39 +1,154 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>LA TV Shows | Home</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles">
-    <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="scripts.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Chronicles | Home</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="scripts.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-..." crossorigin="anonymous">
 </head>
-
 <body>
     <header class="main-header">
-        <h1 class="title">LA TV Shows</h1>
-    </header>
-    <div id="card-container">
-        
-    </div>
-    <div class="card" style="display: none;">
-        <div class="card-content">
-            <h2>TV Show Title</h2>
-            <img src="" alt="TV Show Poster">
-            <ul>
-                <li>Bullet Point 1</li>
-                <li>Bullet Point 2</li>
-                <li>Bullet Point 3</li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer">
-        <button onclick="quoteAlert();">
-            Get A Quote!
-        </button>
-        <button onclick="removeLastCard();">
-            Remove A Card!
-        </button>
-    </div>
-</body>
+        <h1 class="title">Cosmic Chronicles: An Account of the Wonders Beyond Our World</h1>
+        <div class="additional-features-container">
+            <div class="additional-features">
+                <div id="search-button" class="search-button">
+                    <i class="fas fa-search"></i> Search
+                    <div id="search-dropdown" class="dropdown-content">
+                        <button id="nasa-option">NASA</button>
+                        <button id="spacex-option">SpaceX</button>
+                        <button id="esa-option">ESA</button>
+                    </div>
+                </div>
+                <button class="recent-news-button" onclick="openRecentNewsModal()">
+                    <i class="far fa-newspaper"></i> Recent News
+                </button>
 
+                <div id="recent-news-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeRecentNewsModal()">&times;</span>
+                        <h2>Recent News</h2>
+                        <div class="content-wrapper">
+                            <div class="text-section">
+                                <p>Did you miss out on the recent solar eclipse?</p>
+                                <p>Well don't worry, you only have to wait 40 more years!</p>
+                            </div>
+                            <div class="image-section">
+                                <img src="https://kubrick.htvapps.com/htv-prod-media.s3.amazonaws.com/images/2024-totality-jpg-65bd20528acf1.jpg?crop=0.990xw:1.00xh;0.00653xw,0&resize=640:*" alt="Recent News Image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+    <div id="company-info-container"></div>
+
+    <section class="intro-section">
+        <div class="intro-content">
+            <h2>What is Cosmic Chronicles?</h2>
+            <p>"Cosmic Chronicles" is a web platform dedicated to exploring and cataloging various aspects of space exploration, astronomy, and related topics. It serves as an archive where users can discover information about space missions, celestial phenomena, scientific discoveries, and the wonders of the universe. The platform aims to provide educational and informative content to enthusiasts, students, and anyone interested in learning more about the mysteries of outer space!</p>
+        </div>
+        <div class="intro-image">
+            <img src="https://cdn.theatlantic.com/thumbor/B37bXmrzbEGO9Cmhd0RKVqaOnaI=/0x0:2000x1125/960x540/media/img/2022/12/0123_DIS_Koren_Overview_1/original.jpg" alt="Cosmic Chronicles Image">
+        </div>
+    </section>
+    
+
+    <section class="company-section">
+        <div class="company-box" id="nasa-logo" onclick="toggleNasaInfo()">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/1200px-NASA_logo.svg.png" alt="NASA Logo">
+            <div id="nasa-mission-container">
+                <select name="nasa-missions" id="nasa-missions" class="mission-dropdown" onchange="displaySelectedMission('nasa')">
+                    <option value="" disabled selected>Select a NASA mission</option>
+                    <option value="Apollo 11">Apollo 11</option>
+                    <option value="Voyager 1 and 2">Voyager 1 and 2</option>
+                    <option value="Hubble Space Telescope">Hubble Space Telescope</option>
+                </select>
+            </div>
+        </div>
+        <div class="company-box" id="spacex" onclick="toggleSpaceXInfo()">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/SpaceX_logo_black.svg/1920px-SpaceX_logo_black.svg.png" alt="SpaceX Logo">
+            <div id="spacex-mission-container">
+                <select name="spacex-missions" id="spacex-missions" class="mission-dropdown" onchange="displaySelectedMission('spacex')">
+                    <option value="" disabled selected>Select a SpaceX mission</option>
+                    <option value="Falcon 1">Falcon 1</option>
+                    <option value="Falcon 9">Falcon 9</option>
+                    <option value="Dragon spacecraft">Dragon spacecraft</option>
+                </select>
+            </div>
+        </div>
+        <div class="company-box" id="esa" onclick="toggleESAInfo()">
+            <img src="https://upload.wikimedia.org/wikipedia/en/c/ca/ESA_Patch_2022.png" alt="ESA Logo">
+            <div id="esa-mission-container">
+                <select name="esa-missions" id="esa-missions" class="mission-dropdown" onchange="displaySelectedMission('esa')">
+                    <option value="" disabled selected>Select an ESA mission</option>
+                    <option value="Ariane programme">Ariane programme</option>
+                    <option value="Herschel Space Observatory">Herschel Space Observatory</option>
+                    <option value="Rosetta mission">Rosetta mission</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="company-info" id="nasa-info">
+        <h2>NASA Information</h2>
+        <div id="nasa-details"></div>
+    </section>
+
+    <section class="company-info" id="spacex-info">
+        <h2>SpaceX Information</h2>
+        <div id="spacex-details"></div>
+    </section>
+
+    <section class="company-info" id="esa-info">
+        <h2>ESA Information</h2>
+        <div id="esa-details"></div>
+    </section>
+
+    <section>
+        <img src="https://www.daytonastate.edu/academic-departments/college-of-arts-and-sciences/school-of-education/images/bachelor-earth-space-education/cosmos-space.jpg" alt="Image 1">
+    </section>
+    
+
+    <script>
+        function displaySelectedMission(company) {
+            const selectElement = document.getElementById(company + "-missions");
+            const selectedMission = selectElement.value;
+
+            // Retrieve company data based on the selected mission
+            let companyData;
+            switch (company) {
+                case 'nasa':
+                    companyData = nasa;
+                    break;
+                case 'spacex':
+                    companyData = spacex;
+                    break;
+                case 'esa':
+                    companyData = esa;
+                    break;
+                default:
+                    break;
+            }
+
+            // Display selected mission details
+            const missionDetailsContainer = document.getElementById(company + "-details");
+            missionDetailsContainer.innerHTML = "";
+            const selectedMissionData = companyData.notableMissions.find(mission => mission.name === selectedMission);
+            if (selectedMissionData) {
+                const missionDetails = document.createElement("div");
+                missionDetails.innerHTML = `
+                    <p><strong>Name:</strong> ${selectedMissionData.name}</p>
+                    <p><strong>Description:</strong> ${selectedMissionData.description}</p>
+                    <p><strong>Launch Date:</strong> ${selectedMissionData.launchDate}</p>
+                    <img src="${selectedMissionData.image}" alt="${selectedMissionData.name}">
+                `;
+                missionDetailsContainer.appendChild(missionDetails);
+            }
+        }
+    </script>
+</body>
 </html>

@@ -2,58 +2,39 @@ html,
 body {
     margin: 0;
     padding: 0;
+    background-color: rgb(241, 241, 241);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .main-header {
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(20, 64, 222, 0.852);
     padding-bottom: 10px;
 }
 
 .title {
-    text-align: center;
+    text-align: left;
     margin: 0;
-    font-size: 8em;
-    font-family: "Helvetica";
+    font-size: 2em;
+    font-family: serif; /* Use a serif font */
+    font-style: italic; /* Italicize the text */
     font-weight: normal;
     color: white;
+    overflow: hidden;
+    white-space: nowrap; /* Prevent text from wrapping */
+    animation: marquee 18s linear infinite;
+    background-color: transparent; /* Set the background color of the title to transparent */
 }
 
-#card-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
-.card {
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 5px;
-}
-
-.card-content {
-    padding: 20px;
-    font-family: "Verdana";
-    color: #777;
-}
-
-.card-content h2 {
-    margin-top: 0;
-    font-size: 20px;
-}
-
-.card img {
-    width: 100%;
-    height: auto;
-}
-
-.footer {
-    display: flex;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, .3);
-    padding: 10px;
-}
 
 button {
     text-align: center;
@@ -68,3 +49,223 @@ button {
     cursor: pointer;
     margin: 5px;
 }
+
+.additional-features-container {
+    background-color: #71c6ff; /* Change background color */
+    padding: 10px;
+    display: flex; /* Make the container flex */
+    justify-content: space-between; /* Align items in one line */
+}
+
+.additional-features {
+    color: white;
+    display: flex; /* Make the features flex */
+    justify-content: space-between; /* Space between items */
+    font-size: 1.5em; /* Increase font size */
+    font-family: 'Times New Roman', Times, serif; 
+    width: 95%; /* Limit width to prevent items from sticking to the edges */
+    margin: 0 auto; /* Center the container */
+}
+
+.additional-features p {
+    margin: 5px; /* Adjust margin */
+}
+
+
+.search {
+    font-size: 24px; /* Increase font size */
+    font-family: "Times New Roman", serif; /* Use Times New Roman font */
+}
+
+.recent-news {
+    font-size: 24px; /* Increase font size */
+    font-family: "Times New Roman", serif; /* Use Times New Roman font */
+}
+
+
+.intro-section {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Add a shadow effect to the bottom of the introduction section */
+}
+
+.intro-content {
+    width: 50%; /* Take up half of the available space */
+    padding-right: 30px; /* Add spacing between paragraph and image */
+}
+
+.intro-content h2 {
+    font-family: Garamond, serif; /* Use Garamond font */
+    font-size: 2.5em; /* Increase font size */
+    margin-right: 20px; /* Add right margin to create space between the text and the image */
+    text-align: left; /* Align text to the left */
+}
+
+.intro-content p {
+    font-size: 1.2em; /* Increase font size for the paragraph */
+}
+
+.intro-image {
+    width: 30%; /* Take up the other half of the available space */
+}
+
+.intro-image img {
+    max-width: 100%; /* Make the image responsive */
+    height: auto;
+    border-radius: 15px; /* Adjust the radius value to control the amount of rounding */
+    border: 30px whitesmoke transparent; /* Add a transparent border */
+    box-shadow: 0 0 70px rgba(0, 0, 0, 0.5); /* Add a soft shadow effect */
+}
+
+.company-section {
+    padding: 50px 0;
+    background-image: url('https://www.daytonastate.edu/academic-departments/college-of-arts-and-sciences/school-of-education/images/bachelor-earth-space-education/cosmos-space.jpg');
+    background-size: cover; /* Cover the entire section */
+    background-position: center; /* Center the background image */
+    text-align: center;
+}
+
+.company-box {
+    background-color: white; /* Set the background color to white */
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 0 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.company-box img {
+    max-width: 80%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.company-box:hover {
+    transform: translateY(-10px);
+}
+
+.company-box:hover .company-info {
+    display: block;
+}
+
+.company-info {
+    display: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.company-info button {
+    display: block;
+    margin-bottom: 70px;
+}
+
+.company-info button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Initially hide the dropdown content */
+#search-dropdown {
+    display: none;
+}
+
+/* Style the search button to make it look like a button */
+.search-button {
+    cursor: pointer;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* CSS for the modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 100, 0.7); /* Dark blue background color with some transparency */
+    padding-top: 50px; /* Place modal content at the center */
+}
+
+/* CSS for the modal content */
+.modal-content {
+    background-color: #839ca3; /* Dark blue background color */
+    margin: auto;
+    padding: 20px;
+    border: 10px solid #eade59;
+    width: 80%; /* Set width of modal content */
+    color: white; /* White text color */
+}
+
+/* CSS for centering text */
+.modal-content h2,
+.modal-content p {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* CSS for the close button */
+.close {
+    color: white; /* White text color */
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #ccc; /* Light gray hover color */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* CSS for the image */
+.modal-content img {
+    display: block; /* Ensure the image is treated as a block element */
+    margin: 0 auto; /* Center the image horizontally */
+    max-width: 100%; /* Limit the image width to its container */
+    height: auto; /* Maintain the aspect ratio */
+    max-height: 80vh; /* Set a maximum height, adjust as needed */
+}
+
+
+  
+
+
+
+
+
+
+
